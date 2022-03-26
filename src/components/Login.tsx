@@ -164,7 +164,7 @@ const Login: React.FC = () => {
               )}
             </div>
             <div className={`form-group mt-16`}>
-              <form
+              <div
                 className={`flex flex-col gap-6 px-2`}
               >
                 <div
@@ -263,7 +263,7 @@ const Login: React.FC = () => {
                 >
                   Signup
                 </Link>
-              </form>
+              </div>
             </div>
           </>
         )}
