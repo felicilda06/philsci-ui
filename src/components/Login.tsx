@@ -166,7 +166,6 @@ const Login: React.FC = () => {
             <div className={`form-group mt-16`}>
               <form
                 className={`flex flex-col gap-6 px-2`}
-                onSubmit={handleSubmit}
               >
                 <div
                   className={`form-input flex flex-col relative text-13px duration-200`}
