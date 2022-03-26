@@ -13,6 +13,7 @@ const Logo = require(`../assets/images/logo.jpg`);
 
 type TypeProps = `text` | `password` | `radio` | `checkbox`;
 
+
 export interface InputValProps {
   Email?: string;
   Password?: string;
@@ -164,8 +165,9 @@ const Login: React.FC = () => {
               )}
             </div>
             <div className={`form-group mt-16`}>
-              <div
+              <form
                 className={`flex flex-col gap-6 px-2`}
+                onSubmit={handleSubmit}
               >
                 <div
                   className={`form-input flex flex-col relative text-13px duration-200`}
@@ -253,7 +255,9 @@ const Login: React.FC = () => {
                 </span>
                 <button
                   onClick={handleSubmit}
-                  className={`outline-none bg-normalBlue py-1 mt-3 rounded-full text-13px text-gray-50 duration-200 hover:bg-primaryBlue`}
+                  
+                  type={`submit`}
+                  className={`outline-none cursor-pointer bg-normalBlue py-1 mt-3 rounded-full text-13px text-gray-50 duration-200 hover:bg-primaryBlue`}
                 >
                   Login
                 </button>
@@ -263,7 +267,7 @@ const Login: React.FC = () => {
                 >
                   Signup
                 </Link>
-              </div>
+              </form>
             </div>
           </>
         )}
