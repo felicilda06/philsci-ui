@@ -254,7 +254,6 @@ const Login: React.FC = () => {
                 </span>
                 <button
                   onClick={handleSubmit}
-                  type={`submit`}
                   className={`outline-none bg-normalBlue py-1 mt-3 rounded-full text-13px text-gray-50 duration-200 hover:bg-primaryBlue`}
                 >
                   Login
