@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { HashLoader } from "react-spinners";
 import styled from "styled-components";
 import { serverURL } from "../config/config";
+import _ from "lodash";
 
 const plenary = require(`../assets/images/plenary.jpg`);
 const lounge = require(`../assets/images/lounge.jpg`);
@@ -12,8 +13,14 @@ const crest = require(`../assets/images/crest.jpg`);
 const gym = require(`../assets/images/gym.jpg`);
 const SMT = require(`../assets/images/smt2.png`);
 const admin = require(`../assets/images/admin.jpg`);
+const unavailable = require(`../assets/images/unavailable.jpg`)
 
-type EventProps = `Programs` | `Research Congress` | `Research Exhibits` | `Makers Fest`
+type EventProps =
+  | `Programs`
+  | `Research Congress`
+  | `Research Exhibits`
+  | `Interactive Games`;
+type TStatus = `enable` | `disable`;
 
 export interface UserProps {
   id?: string;
@@ -22,8 +29,18 @@ export interface UserProps {
 interface PopupProps {
   onShow?: boolean;
   image?: string;
-  component?: EventProps
+  component?: EventProps;
+  status?: TStatus;
+}
 
+interface EventDataProps {
+  data?: any;
+  code?: number;
+}
+
+interface GetEventProps {
+  event?: EventProps;
+  status?: TStatus;
 }
 
 const Portal: React.FC = () => {
@@ -36,6 +53,7 @@ const Portal: React.FC = () => {
   });
 
   const [modal, setModal] = useState<boolean | undefined>(popup.onShow);
+  const [fetchEvent, setFetchEvent] = useState<EventDataProps>({});
 
   const navigate = useNavigate();
 
@@ -76,11 +94,58 @@ const Portal: React.FC = () => {
     setPopup(popup);
   }, [popup]);
 
+  useEffect(() => {
+    setFetchEvent(fetchEvent);
+  }, [fetchEvent]);
+
   const onClickPopup = (props: PopupProps) => {
-    setModal(props.onShow);
+    const { onShow, component, image, status } = props;
+
+    setModal(onShow);
     setPopup({
-      image: props.image,
+      image: image,
+      component: component,
     });
+
+    getEvent({
+      event: component,
+      status: status,
+    });
+  };
+
+  const getEvent = (props: GetEventProps) => {
+    const token = sessionStorage.getItem("token");
+
+    const { status, event } = props;
+
+    axios({
+      method: "POST",
+      url: `${serverURL}/event/specific`,
+      data: {
+        status: status,
+        event: event,
+      },
+      headers: {
+        Authorization: `Bearer ${token}`,
+        cors: "*",
+      },
+    })
+      .then((response) => {
+        const { events, status } = response.data;
+
+        setFetchEvent({
+          data: events,
+          code: status,
+        });
+      })
+      .catch((err) => {
+        const { status } = err.response.data;
+
+        setFetchEvent({
+          data: null,
+          code: status,
+        });
+      });
   };
 
   return (
@@ -108,7 +173,8 @@ const Portal: React.FC = () => {
                   onClickPopup({
                     onShow: true,
                     image: plenary,
-                    component:`Programs`
+                    status: `enable`,
+                    component: `Programs`,
                   });
                 }}
                 title={`Auditorium`}
@@ -130,7 +196,8 @@ const Portal: React.FC = () => {
                   onClickPopup({
                     onShow: true,
                     image: crest,
-                    component:`Research Congress`
+                    status: `enable`,
+                    component: `Research Exhibits`,
                   });
                 }}
                 title={`Crest Building`}
@@ -144,7 +211,7 @@ const Portal: React.FC = () => {
                 <h2
                   className={`text-center font-semibold text-primaryBlue tracking-wider uppercase text-14px`}
                 >
-                  Research Congress
+                  Research Exhibits
                 </h2>
               </StyledMenu>
             </div>
@@ -197,7 +264,8 @@ const Portal: React.FC = () => {
                   onClickPopup({
                     onShow: true,
                     image: lounge,
-                    component:`Research Exhibits`
+                    status: `enable`,
+                    component: `Research Congress`,
                   });
                 }}
                 title={`Student Lounge`}
@@ -211,7 +279,7 @@ const Portal: React.FC = () => {
                 <h2
                   className={`text-center font-semibold text-primaryBlue tracking-wider uppercase text-14px`}
                 >
-                  Research Exhibits
+                  Research Congress
                 </h2>
               </StyledMenu>
               <StyledMenu
@@ -219,7 +287,8 @@ const Portal: React.FC = () => {
                   onClickPopup({
                     onShow: true,
                     image: gym,
-                    component:`Makers Fest`
+                    status: `enable`,
+                    component: `Interactive Games`,
                   });
                 }}
                 title={`Gymnasium`}
@@ -302,19 +371,70 @@ const Portal: React.FC = () => {
         <div
           className={`h-screen w-screen absolute z-10 top-0 bg-[rgba(0,0,0,0.6)] flex justify-center items-center py-10 px-14`}
         >
-          <div
-            className={`modal h-auto w-modal-size flex justify-center bg-white rounded-xl shadow-xl shadow-gray-700 p-10 relative`}
+          <StyledModal
+            className={`modal h-full overflow-x-hidden  w-modal-size overflow-y-auto flex justify-center bg-white rounded-xl  shadow-xl shadow-gray-700 relative`}
           >
-            <i
-              onClick={() => {
-                onClickPopup({
-                  onShow: false,
-                });
-              }}
-              className={`fa fa-close absolute top-3 right-4 text-gray-700 cursor-pointer duration-150 hover:text-gray-800`}
-            />
-            <img src={popup.image} className={`w-full h-full`} />
-          </div>
+            <div className={`wrap-container absolute p-10`}>
+              <i
+                onClick={() => {
+                  onClickPopup({
+                    onShow: false,
+                  });
+                }}
+                className={`fa fa-close absolute top-3 text-gray-700 cursor-pointer right-4 duration-150 hover:text-gray-800`}
+              />
+              <div className={`flex flex-col gap-6 text-13px relative`}>
+                <img src={!!fetchEvent.data ? popup.image : unavailable} className={`w-full h-full`}/>
+                {!!fetchEvent.data ? (
+                  <>
+                    <h1
+                      className={`text-center tracking-wider text-primaryBlue text-16px font-semibold`}
+                    >
+                      {fetchEvent.data.topic}
+                    </h1>
+                    <div>
+                      <h2 className={`text-gray-900 tracking-wider mb-1`}>
+                        Date: {fetchEvent.data.date}
+                      </h2>
+                      <h2 className={`text-gray-900 tracking-wider`}>
+                        Time: {fetchEvent.data.startTime} -{" "}
+                        {fetchEvent.data.endTime}
+                      </h2>
+                    </div>
+                    <div>
+                      <span className={`font-semibold text-gray-900`}>
+                        Join Zoom Meeting
+                      </span>
+                      <a
+                        href={fetchEvent.data.link}
+                        className={`text-normalBlue outline-none underline tracking-wide block mb-5 mt-2 duration-150 hover:text-primaryBlue`}
+                      >
+                        {fetchEvent.data.link}
+                      </a>
+                      <span>Meeting ID: {fetchEvent.data.meetingId}</span>
+                      <span className={`block mt-1`}>
+                        Passcode: {fetchEvent.data.passCode}
+                      </span>
+                    </div>
+                    {Object.keys(fetchEvent.data.participant).length > 1 && (
+                      <div className={`text-gray-900`}>
+                        <h3
+                          className={`mb-2 text-15px tracking-wide font-semibold`}
+                        >
+                          Participants :
+                        </h3>
+                        {_.map(fetchEvent.data.participant, (data) => {
+                          return <li>{data}</li>;
+                        })}
+                      </div>
+                    )}
+                  </>
+                ) : (
+                  <h1 className={`text-red-400 text-center text-lg font-semibold mt-6 tracking-wide`}>Event is not activated by the admin.</h1>
+                )}
+              </div>
+            </div>
+          </StyledModal>
         </div>
       )}
     </>
@@ -331,5 +451,15 @@ const StyledMenu = styled.div`
   :hover {
     box-shadow: 5px 8px 10px rgba(66, 152, 228, 0.5);
     transform: scale(1.1);
+  }
+`;
+
+const StyledModal = styled.div`
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #1e81b0;
+    border-radius: 10px;
   }
 `;
