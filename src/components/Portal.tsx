@@ -13,14 +13,17 @@ const gym = require(`../assets/images/gym.jpg`);
 const SMT = require(`../assets/images/smt2.png`);
 const admin = require(`../assets/images/admin.jpg`);
 
-interface PopoverProps {
-  image: string;
-  onShow: boolean;
-}
+type EventProps = `Programs` | `Research Congress` | `Research Exhibits` | `Makers Fest`
 
 export interface UserProps {
   id?: string;
   role?: string;
+}
+interface PopupProps {
+  onShow?: boolean;
+  image?: string;
+  component?: EventProps
+
 }
 
 const Portal: React.FC = () => {
@@ -28,6 +31,11 @@ const Portal: React.FC = () => {
   const [signout, setSignout] = useState<boolean>(false);
   const [dates, setDates] = useState<any>();
   const [user, setUser] = useState<UserProps>({});
+  const [popup, setPopup] = useState<PopupProps>({
+    onShow: false,
+  });
+
+  const [modal, setModal] = useState<boolean | undefined>(popup.onShow);
 
   const navigate = useNavigate();
 
@@ -64,6 +72,17 @@ const Portal: React.FC = () => {
     });
   }, []);
 
+  useEffect(() => {
+    setPopup(popup);
+  }, [popup]);
+
+  const onClickPopup = (props: PopupProps) => {
+    setModal(props.onShow);
+    setPopup({
+      image: props.image,
+    });
+  };
+
   return (
     <>
       {loader ? (
@@ -85,6 +104,13 @@ const Portal: React.FC = () => {
               className={`menu flex flex-col items-center gap-10 w-full py-4 md:py-10 lg:py-10 xl:py-10`}
             >
               <StyledMenu
+                onClick={() => {
+                  onClickPopup({
+                    onShow: true,
+                    image: plenary,
+                    component:`Programs`
+                  });
+                }}
                 title={`Auditorium`}
                 className={`auditorium duration-150 flex flex-col justify-center bg-white gap-4 pb-4 cursor-pointer rounded-xl`}
               >
@@ -100,6 +126,13 @@ const Portal: React.FC = () => {
                 </h2>
               </StyledMenu>
               <StyledMenu
+                onClick={() => {
+                  onClickPopup({
+                    onShow: true,
+                    image: crest,
+                    component:`Research Congress`
+                  });
+                }}
                 title={`Crest Building`}
                 className={`student-lounge duration-150 flex flex-col justify-center bg-white gap-2 pb-4 cursor-pointer rounded-xl`}
               >
@@ -119,6 +152,12 @@ const Portal: React.FC = () => {
               className={`menu flex flex-col items-center gap-10 w-full py-4 md:py-10 lg:py-10 xl:py-10`}
             >
               <StyledMenu
+                onClick={() => {
+                  onClickPopup({
+                    onShow: true,
+                    image: inforDesk,
+                  });
+                }}
                 className={`info-desk duration-150 flex flex-col justify-center bg-white gap-4 pb-4 cursor-pointer rounded-xl`}
               >
                 <img
@@ -154,6 +193,13 @@ const Portal: React.FC = () => {
               className={`menu flex flex-col items-center gap-10 w-full py-4 md:py-10 lg:py-10 xl:py-10`}
             >
               <StyledMenu
+                onClick={() => {
+                  onClickPopup({
+                    onShow: true,
+                    image: lounge,
+                    component:`Research Exhibits`
+                  });
+                }}
                 title={`Student Lounge`}
                 className={`crest-building duration-150 flex flex-col justify-center bg-white gap-2 pb-4 cursor-pointer rounded-xl`}
               >
@@ -169,6 +215,13 @@ const Portal: React.FC = () => {
                 </h2>
               </StyledMenu>
               <StyledMenu
+                onClick={() => {
+                  onClickPopup({
+                    onShow: true,
+                    image: gym,
+                    component:`Makers Fest`
+                  });
+                }}
                 title={`Gymnasium`}
                 className={`gym duration-150 flex flex-col justify-center bg-white gap-4 pb-4 cursor-pointer rounded-xl`}
               >
@@ -245,6 +298,25 @@ const Portal: React.FC = () => {
           </div>
         )
       }
+      {modal && (
+        <div
+          className={`h-screen w-screen absolute z-10 top-0 bg-[rgba(0,0,0,0.6)] flex justify-center items-center py-10 px-14`}
+        >
+          <div
+            className={`modal h-auto w-modal-size flex justify-center bg-white rounded-xl shadow-xl shadow-gray-700 p-10 relative`}
+          >
+            <i
+              onClick={() => {
+                onClickPopup({
+                  onShow: false,
+                });
+              }}
+              className={`fa fa-close absolute top-3 right-4 text-gray-700 cursor-pointer duration-150 hover:text-gray-800`}
+            />
+            <img src={popup.image} className={`w-full h-full`} />
+          </div>
+        </div>
+      )}
     </>
   );
 };

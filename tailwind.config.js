@@ -22,11 +22,13 @@ module.exports = {
         "admin-menu":"20%",
         "admin-page":"80%",
         "admin-menu-resize":"25%",
+        "modal-img":"100%",
+        "modal-size":"500px"
         
       },
       height:{
         "menu-size":"100px",
-        "img-modal":"170px"
+        "img-modal":"170px",
       },
       fontSize:{
         "9px":"9px",
