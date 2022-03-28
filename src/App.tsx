@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { Login, Register, Portal, AdminPage } from './components';
+import { Login, Register, Portal, AdminPage, Infodesk } from './components';
 
 const App: React.FC = () => {
   
@@ -12,6 +12,7 @@ const App: React.FC = () => {
           <Route path={`/signup`} element={<Register/>}/>
           <Route path={`/portal`} element={<Portal/>}/>
           <Route path={`/admin`} element={<AdminPage/>}/>
+          <Route path={`/info-desk`} element={<Infodesk/>}/>
       </Routes>
     </Router>
   );

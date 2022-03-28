@@ -1,10 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { HashLoader } from "react-spinners";
 import styled from "styled-components";
 import { serverURL } from "../config/config";
 import _ from "lodash";
+// import { Carousel } from "react-responsive-carousel";
 
 const plenary = require(`../assets/images/plenary.jpg`);
 const lounge = require(`../assets/images/lounge.jpg`);
@@ -13,13 +14,15 @@ const crest = require(`../assets/images/crest.jpg`);
 const gym = require(`../assets/images/gym.jpg`);
 const SMT = require(`../assets/images/smt2.png`);
 const admin = require(`../assets/images/admin.jpg`);
-const unavailable = require(`../assets/images/unavailable.jpg`)
+const unavailable = require(`../assets/images/unavailable.jpg`);
 
 type EventProps =
   | `Programs`
   | `Research Congress`
   | `Research Exhibits`
-  | `Interactive Games`;
+  | `Interactive Games`
+  | `Info Desk`;
+
 type TStatus = `enable` | `disable`;
 
 export interface UserProps {
@@ -188,7 +191,7 @@ const Portal: React.FC = () => {
                 <h2
                   className={`text-center font-semibold text-primaryBlue tracking-wider uppercase text-14px`}
                 >
-                  Programs
+                  Career Talk / Programs
                 </h2>
               </StyledMenu>
               <StyledMenu
@@ -223,6 +226,8 @@ const Portal: React.FC = () => {
                   onClickPopup({
                     onShow: true,
                     image: inforDesk,
+                    component: `Info Desk`,
+                    status: "enable",
                   });
                 }}
                 className={`info-desk duration-150 flex flex-col justify-center bg-white gap-4 pb-4 cursor-pointer rounded-xl`}
@@ -367,75 +372,96 @@ const Portal: React.FC = () => {
           </div>
         )
       }
+
+      {/* Modal Menu */}
       {modal && (
-        <div
-          className={`h-screen w-screen absolute z-10 top-0 bg-[rgba(0,0,0,0.6)] flex justify-center items-center py-10 px-14`}
-        >
-          <StyledModal
-            className={`modal h-full overflow-x-hidden  w-modal-size overflow-y-auto flex justify-center bg-white rounded-xl  shadow-xl shadow-gray-700 relative`}
-          >
-            <div className={`wrap-container absolute p-10`}>
-              <i
-                onClick={() => {
-                  onClickPopup({
-                    onShow: false,
-                  });
-                }}
-                className={`fa fa-close absolute top-3 text-gray-700 cursor-pointer right-4 duration-150 hover:text-gray-800`}
-              />
-              <div className={`flex flex-col gap-6 text-13px relative`}>
-                <img src={!!fetchEvent.data ? popup.image : unavailable} className={`w-full h-full`}/>
-                {!!fetchEvent.data ? (
-                  <>
-                    <h1
-                      className={`text-center tracking-wider text-primaryBlue text-16px font-semibold`}
-                    >
-                      {fetchEvent.data.topic}
-                    </h1>
-                    <div>
-                      <h2 className={`text-gray-900 tracking-wider mb-1`}>
-                        Date: {fetchEvent.data.date}
-                      </h2>
-                      <h2 className={`text-gray-900 tracking-wider`}>
-                        Time: {fetchEvent.data.startTime} -{" "}
-                        {fetchEvent.data.endTime}
-                      </h2>
-                    </div>
-                    <div>
-                      <span className={`font-semibold text-gray-900`}>
-                        Join Zoom Meeting
-                      </span>
-                      <a
-                        href={fetchEvent.data.link}
-                        className={`text-normalBlue outline-none underline tracking-wide block mb-5 mt-2 duration-150 hover:text-primaryBlue`}
-                      >
-                        {fetchEvent.data.link}
-                      </a>
-                      <span>Meeting ID: {fetchEvent.data.meetingId}</span>
-                      <span className={`block mt-1`}>
-                        Passcode: {fetchEvent.data.passCode}
-                      </span>
-                    </div>
-                    {Object.keys(fetchEvent.data.participant).length > 1 && (
-                      <div className={`text-gray-900`}>
-                        <h3
-                          className={`mb-2 text-15px tracking-wide font-semibold`}
-                        >
-                          Participants :
-                        </h3>
-                        {_.map(fetchEvent.data.participant, (data) => {
-                          return <li>{data}</li>;
-                        })}
+        <>
+          <StyledModal className={`overlay w-screen h-screen absolute top-0`}>
+            <div
+              className={`relative z-10 w-auto h-full flex justify-center items-center px-10`}
+            >
+              <div
+                className={`bg-gray-50 p-10 relative shadow-lg shadow-gray-700 rounded-xl`}
+              >
+                <i
+                  title={`Close`}
+                  className={`fa fa-close absolute right-5 top-4 duration-150 text-gray-700 cursor-pointer hover:text-gray-900`}
+                  onClick={() => {
+                    onClickPopup({
+                      onShow: false,
+                    });
+                  }}
+                />
+                <div className={`relative`}>
+                  <div className={`flex justify-center`}>
+                    {fetchEvent.data &&
+                    fetchEvent.data.event === `Info Desk` ? (
+                      <div className={` h-auto w-auto`}>
+                         <small className={`text-red-400 font-semibold text-lg tracking-wide text-center`}>Sizes of image is too large...</small>
+                         <Link to={`/info-desk`} className={`block text-center w-full mt-10 bg-normalBlue py-1 outline-none rounded-full duration-150 hover:bg-primaryBlue text-gray-50`}>
+                            <button className={``}><i className={`fa fa-external-link`}/> Preview</button>
+                         </Link>
                       </div>
+                    ) : (
+                      <img
+                        src={popup.image}
+                        alt=""
+                        className={`w-modal-img-size h-auto mt-4`}
+                      />
                     )}
-                  </>
-                ) : (
-                  <h1 className={`text-red-400 text-center text-lg font-semibold mt-6 tracking-wide`}>Event is not activated by the admin.</h1>
-                )}
+                  </div>
+                  <div>
+                    {fetchEvent.data &&
+                      fetchEvent.code === 200 &&
+                      !!fetchEvent.data.link && (
+                        <>
+                          <h2
+                            className={`text-center mt-8 font-semibold text-15px tracking-wide text-normalBlue`}
+                          >
+                            {fetchEvent.data.topic}
+                          </h2>
+                          <div
+                            className={`text-13px tracking-wide text-gray-900 mt-5 flex flex-col gap-1`}
+                          >
+                            <h3>Date: {fetchEvent.data.date}</h3>
+                            <h3>
+                              Time: {fetchEvent.data.startTime} -{" "}
+                              {fetchEvent.data.endTime}
+                            </h3>
+                            <h2 className={`mt-6 text-gray-800 font-semibold`}>
+                              Join Zoom Meeting
+                            </h2>
+                            <span>Meeting ID: {fetchEvent.data.meetingId}</span>
+                            <span>Passcode: {fetchEvent.data.passCode}</span>
+                            <div>
+                              <h2
+                                className={`mt-4 font-semibold text-normalBlue`}
+                              >
+                                Colaborator :
+                              </h2>
+                              {_.map(fetchEvent.data.participant, (data) => {
+                                return (
+                                  <li>
+                                    {!!data ? data : `None`}
+                                  </li>
+                                );
+                              })}
+                            </div>
+                            <a
+                              href={fetchEvent.data.link}
+                              className={`outline-none py-1 text-center bg-normalBlue text-gray-50 mt-10 rounded-full duration-150 hover:bg-primaryBlue`}
+                            >
+                              Join Meeting
+                            </a>
+                          </div>
+                        </>
+                      )}
+                  </div>
+                </div>
               </div>
             </div>
           </StyledModal>
-        </div>
+        </>
       )}
     </>
   );
@@ -455,11 +481,5 @@ const StyledMenu = styled.div`
 `;
 
 const StyledModal = styled.div`
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-  ::-webkit-scrollbar-thumb {
-    background-color: #1e81b0;
-    border-radius: 10px;
-  }
+  background-color: rgba(0, 0, 0, 0.6);
 `;
