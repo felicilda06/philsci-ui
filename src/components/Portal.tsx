@@ -397,10 +397,19 @@ const Portal: React.FC = () => {
                     {fetchEvent.data &&
                     fetchEvent.data.event === `Info Desk` ? (
                       <div className={` h-auto w-auto`}>
-                         <small className={`text-red-400 font-semibold text-lg tracking-wide text-center`}>Sizes of image is too large...</small>
-                         <Link to={`/info-desk`} className={`block text-center w-full mt-10 bg-normalBlue py-1 outline-none rounded-full duration-150 hover:bg-primaryBlue text-gray-50`}>
-                            <button className={``}><i className={`fa fa-external-link`}/> Preview</button>
-                         </Link>
+                        <small
+                          className={`text-red-400 font-semibold text-lg tracking-wide text-center`}
+                        >
+                          Sizes of image is too large...
+                        </small>
+                        <Link
+                          to={`/info-desk`}
+                          className={`block text-center w-full mt-10 bg-normalBlue py-1 outline-none rounded-full duration-150 hover:bg-primaryBlue text-gray-50`}
+                        >
+                          <button className={``}>
+                            <i className={`fa fa-external-link`} /> Preview
+                          </button>
+                        </Link>
                       </div>
                     ) : (
                       <img
@@ -411,19 +420,21 @@ const Portal: React.FC = () => {
                     )}
                   </div>
                   <div>
-                    {
-                      fetchEvent.data && fetchEvent.data.event === `Research Exhibits` && (
+                    {fetchEvent.data &&
+                      fetchEvent.data.event === `Research Exhibits` && (
                         <div className={`mt-6`}>
-                          <span className={`tedxt-13px text-gray-800`}>For Research Exhibits, please click the button bellow.</span>
+                          <span className={`tedxt-13px text-gray-800`}>
+                            For Research Exhibits, please click the button
+                            below.
+                          </span>
                           <a
-                              href={`https://www.facebook.com/pisayevc`}
-                              className={`outline-none py-1 text-center bg-normalBlue text-gray-50 mt-10 rounded-full duration-150 hover:bg-primaryBlue block`}
-                            >
-                              Click here
-                            </a>
+                            href={`https://www.facebook.com/pisayevc`}
+                            className={`outline-none py-1 text-center bg-normalBlue text-gray-50 mt-10 rounded-full duration-150 hover:bg-primaryBlue block`}
+                          >
+                            Click here
+                          </a>
                         </div>
-                      )
-                    }
+                      )}
                     {fetchEvent.data &&
                       fetchEvent.code === 200 &&
                       !!fetchEvent.data.link && (
@@ -453,12 +464,27 @@ const Portal: React.FC = () => {
                                 Colaborator :
                               </h2>
                               {_.map(fetchEvent.data.participant, (data) => {
-                                return (
-                                  <li>
-                                    {!!data ? data : `None`}
-                                  </li>
-                                );
+                                return <li>{!!data ? data : `None`}</li>;
                               })}
+                            </div>
+                            <div>
+                              {fetchEvent.data.event ===
+                                `Interactive Games` && (
+                                <div>
+                                  <Link
+                                    to={`/winners`}
+                                    className={`block text-center w-full mt-10  py-1 outline-none rounded-full duration-150 underline text-normalBlue`}
+                                  >
+                                    See Winners
+                                  </Link>
+                                  <Link
+                                    to={`/prizes`}
+                                    className={`block text-center w-full mt-2  py-1 outline-none rounded-full duration-150 underline text-normalBlue`}
+                                  >
+                                    See Prizes
+                                  </Link>
+                                </div>
+                              )}
                             </div>
                             <a
                               href={fetchEvent.data.link}
