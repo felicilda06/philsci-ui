@@ -411,6 +411,19 @@ const Portal: React.FC = () => {
                     )}
                   </div>
                   <div>
+                    {
+                      fetchEvent.data && fetchEvent.data.event === `Research Exhibits` && (
+                        <div className={`mt-6`}>
+                          <span className={`tedxt-13px text-gray-800`}>For Research Exhibits, please click the button bellow.</span>
+                          <a
+                              href={`https://www.facebook.com/pisayevc`}
+                              className={`outline-none py-1 text-center bg-normalBlue text-gray-50 mt-10 rounded-full duration-150 hover:bg-primaryBlue block`}
+                            >
+                              Click here
+                            </a>
+                        </div>
+                      )
+                    }
                     {fetchEvent.data &&
                       fetchEvent.code === 200 &&
                       !!fetchEvent.data.link && (
