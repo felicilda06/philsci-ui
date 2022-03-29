@@ -208,7 +208,7 @@ const physicWinners = {
   data: [
     {
       yearLvl: `Grade 7`,
-      title: `7-Emerald`,
+      title: `Eberswalde Puzzle`,
       students: [
         `Philip  Acidre`,
         `Juliana Villanueva`,
