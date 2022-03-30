@@ -384,7 +384,7 @@ const Portal: React.FC = () => {
               className={`relative z-10 w-auto h-full flex justify-center items-center px-10`}
             >
               <StyledScroll
-                className={`bg-gray-50 p-10 relative shadow-lg shadow-gray-700 rounded-xl overflow-y-auto ${
+                className={`bg-gray-50 p-10 relative shadow-lg shadow-gray-700 rounded-xl overflow-y-auto px-10 ${
                   fetchEvent.data && fetchEvent.data.event === `Info Desk`
                     ? `h-auto`
                     : `h-menu-resize md:h-menu lg:h-menu xl:h-menu`
@@ -409,7 +409,7 @@ const Portal: React.FC = () => {
                         <div
                           className={`evaluation-links mt-6 text-gray-800 flex flex-col items-center`}
                         >
-                          <p className={`w-96 text-justify tracking-wider text-13px`}>
+                          <p className={` text-justify tracking-wider text-13px`}>
                             We would like to request 5 - 10 mins of your time to
                             evaluate the conduct of 2-day 2022 SMT Fair. Your
                             honest feedback will be used in helping us improve
@@ -440,7 +440,7 @@ const Portal: React.FC = () => {
                             </div>
                           </ul>
                         </div>
-                        <small className={`mt-8 text-gray-800`}>For more information about the program, please click the <b className={`text-normalBlue underline`}>Preview</b> button.</small>
+                        <small className={`mt-8 text-gray-800 text-center`}>For more information about the program, please click the <b className={`text-normalBlue underline`}>Preview</b> button.</small>
                         <small
                           className={`text-gray-800 font-semibold text-13px tracking-wide text-center mt-4`}
                         > 
