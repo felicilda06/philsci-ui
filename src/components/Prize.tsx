@@ -21,7 +21,7 @@ const Prizes: React.FC = () => {
 
   return (
     <div className={`h-auto w-full px-10 py-10 relative`}>
-      <div className={`absolute top-0`}>
+      <div className={`absolute top-0 left-0`}>
         <Confetti width={width} height={height}/>
       </div>
       <h1
