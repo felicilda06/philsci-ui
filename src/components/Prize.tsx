@@ -8,6 +8,7 @@ const Prizes: React.FC = () => {
   const p3 = require(`../assets/images/prize3.png`);
   const p4 = require(`../assets/images/prize4.png`);
   const width = window.innerWidth;
+  const height = window.innerHeight
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -21,7 +22,7 @@ const Prizes: React.FC = () => {
   return (
     <div className={`h-auto w-full px-10 py-10 relative`}>
       <div className={`absolute top-0`}>
-        <Confetti width={width} />
+        <Confetti width={width} height={height}/>
       </div>
       <h1
         className={`text-center tracking-wide text-2xl text-primaryBlue mt-4 font-semibold`}

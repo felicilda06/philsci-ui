@@ -13,6 +13,7 @@ const Winners: React.FC = () => {
 
   const [subject, setSubject] = useState<TSubject>(`Physics`);
   const width = window.innerWidth;
+  const height = window.innerHeight
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -25,8 +26,8 @@ const Winners: React.FC = () => {
 
   return (
     <div className={`h-auto w-full px-10 py-10 relative`}>
-      <div className={`absolute top-0`}>
-        <Confetti width={width} />
+      <div className={`absolute top-0 left-0`}>
+        <Confetti width={width} height={height}/>
       </div>
       <h1
         className={`text-center tracking-wide text-2xl text-primaryBlue mt-4 font-semibold`}
