@@ -5,7 +5,7 @@ import { HashLoader } from "react-spinners";
 import styled from "styled-components";
 import { serverURL } from "../config/config";
 import _ from "lodash";
-// import { Carousel } from "react-responsive-carousel";
+import moment from "moment";
 
 const plenary = require(`../assets/images/plenary.jpg`);
 const lounge = require(`../assets/images/lounge.jpg`);
@@ -14,7 +14,10 @@ const crest = require(`../assets/images/crest.jpg`);
 const gym = require(`../assets/images/gym.jpg`);
 const SMT = require(`../assets/images/smt2.png`);
 const admin = require(`../assets/images/admin.jpg`);
-const unavailable = require(`../assets/images/unavailable.jpg`);
+const poster1 = require(`../assets/images/poster1.jpeg`);
+const poster2 = require(`../assets/images/poster2.jpg`);
+
+const currentDate = moment(new Date()).format(`LL`);
 
 type EventProps =
   | `Programs`
@@ -380,8 +383,12 @@ const Portal: React.FC = () => {
             <div
               className={`relative z-10 w-auto h-full flex justify-center items-center px-10`}
             >
-              <div
-                className={`bg-gray-50 p-10 relative shadow-lg shadow-gray-700 rounded-xl`}
+              <StyledScroll
+                className={`bg-gray-50 p-10 relative shadow-lg shadow-gray-700 rounded-xl overflow-y-auto ${
+                  fetchEvent.data && fetchEvent.data.event === `Info Desk`
+                    ? `h-auto`
+                    : `h-menu-resize md:h-menu lg:h-menu xl:h-menu`
+                }`}
               >
                 <i
                   title={`Close`}
@@ -396,15 +403,52 @@ const Portal: React.FC = () => {
                   <div className={`flex justify-center`}>
                     {fetchEvent.data &&
                     fetchEvent.data.event === `Info Desk` ? (
-                      <div className={` h-auto w-auto`}>
-                        <small
-                          className={`text-red-400 font-semibold text-lg tracking-wide text-center`}
+                      <div
+                        className={`h-auto w-auto flex justify-center flex-col`}
+                      >
+                        <div
+                          className={`evaluation-links mt-6 text-gray-800 flex flex-col items-center`}
                         >
-                          Sizes of image is too large...
+                          <p className={`w-96 text-justify tracking-wider text-13px`}>
+                            We would like to request 5 - 10 mins of your time to
+                            evaluate the conduct of 2-day 2022 SMT Fair. Your
+                            honest feedback will be used in helping us improve
+                            the implementation of the fair in future.
+                          </p>
+                          <ul className={`mt-5 text-13px flex flex-col gap-5`}>
+                            <div>
+                              <li className={`list-disc`}>
+                                Evaluation - Day 1 of 2022 SMT Fair
+                              </li>
+                              <a
+                                href="https://docs.google.com/forms/d/e/1FAIpQLScLlRya_4D9ei4g7JOFYG9htuGIdY7KLp9gnDxurdRa5lyrGg/formrestricted"
+                                className={`underline text-normalBlue w-full duration-150 hover:text-primaryBlue`}
+                              >
+                                Click here
+                              </a>
+                            </div>
+                            <div>
+                              <li className={`list-disc`}>
+                                Evaluation - Day 2 of 2022 SMT Fair
+                              </li>
+                              <a
+                                href="https://docs.google.com/forms/d/e/1FAIpQLSd_djqAlqVOGxLwx8rTY3h2g9fL0Mgsf1-HnT03Q4JBOpUuZA/formrestricted"
+                                className={`underline text-normalBlue w-full duration-150 hover:text-primaryBlue`}
+                              >
+                                Click here
+                              </a>
+                            </div>
+                          </ul>
+                        </div>
+                        <small className={`mt-8 text-gray-800`}>For more information about the program, please click the <b className={`text-normalBlue underline`}>Preview</b> button.</small>
+                        <small
+                          className={`text-gray-800 font-semibold text-13px tracking-wide text-center mt-4`}
+                        > 
+                          Program of Activities
                         </small>
                         <Link
                           to={`/info-desk`}
-                          className={`block text-center w-full mt-10 bg-normalBlue py-1 outline-none rounded-full duration-150 hover:bg-primaryBlue text-gray-50`}
+                          className={`block text-center w-full mt-6 bg-normalBlue py-1 text-13px outline-none rounded-full duration-150 hover:bg-primaryBlue text-gray-50`}
                         >
                           <button className={``}>
                             <i className={`fa fa-external-link`} /> Preview
@@ -422,14 +466,41 @@ const Portal: React.FC = () => {
                   <div>
                     {fetchEvent.data &&
                       fetchEvent.data.event === `Research Exhibits` && (
-                        <div className={`mt-6`}>
-                          <span className={`tedxt-13px text-gray-800`}>
-                            For Research Exhibits, please click the button
-                            below.
+                        <div className={`mt-10`}>
+                          <span
+                            className={`text-14px text-gray-800 flex justify-center`}
+                          >
+                            For more example, please click the button below.
                           </span>
+                          <div
+                            className={`flex flex-col gap-8 items-center mt-6`}
+                          >
+                            <a
+                              href="https://www.facebook.com/pisayevc/photos/pcb.4444369162330412/4444363935664268/"
+                              className={`w-img-modal relative h-img-modal flex justify-center`}
+                            >
+                              <StyledImages
+                                src={poster1}
+                                alt="Poster 1"
+                                title={`Poster 1`}
+                                className={`w-img-size relative h-img-modal object-cover border border-gray-300 cursor-zoom-in duration-150`}
+                              />
+                            </a>
+                            <a
+                              href="https://www.facebook.com/pisayevc/photos/pcb.4444369162330412/4444365488997446/"
+                              className={`w-img-modal relative h-img-modal flex justify-center`}
+                            >
+                              <StyledImages
+                                src={poster2}
+                                alt="Poster 2"
+                                title={`Poster 2`}
+                                className={`w-img-size relative h-img-modal object-cover border border-gray-300 cursor-zoom-in duration-150`}
+                              />
+                            </a>
+                          </div>
                           <a
                             href={`https://www.facebook.com/pisayevc`}
-                            className={`outline-none py-1 text-center bg-normalBlue text-gray-50 mt-10 rounded-full duration-150 hover:bg-primaryBlue block`}
+                            className={`outline-none py-1 text-center bg-normalBlue text-gray-50 mt-10 text-13px rounded-full duration-150 hover:bg-primaryBlue block`}
                           >
                             Click here
                           </a>
@@ -473,31 +544,56 @@ const Portal: React.FC = () => {
                                 <div>
                                   <Link
                                     to={`/winners`}
-                                    className={`block text-center w-full mt-10  py-1 outline-none rounded-full duration-150 underline text-normalBlue`}
+                                    className={`block text-center w-full mt-10  py-1 outline-none rounded-full duration-150 underline text-normalBlue hover:text-primaryBlue`}
                                   >
                                     See Winners
                                   </Link>
                                   <Link
                                     to={`/prizes`}
-                                    className={`block text-center w-full mt-2  py-1 outline-none rounded-full duration-150 underline text-normalBlue`}
+                                    className={`block text-center w-full  py-1 outline-none rounded-full duration-150 underline text-normalBlue hover:text-primaryBlue`}
                                   >
                                     See Prizes
                                   </Link>
                                 </div>
                               )}
                             </div>
-                            <a
-                              href={fetchEvent.data.link}
-                              className={`outline-none py-1 text-center bg-normalBlue text-gray-50 mt-10 rounded-full duration-150 hover:bg-primaryBlue`}
-                            >
-                              Join Meeting
-                            </a>
+                            {fetchEvent.data.event === `Programs` ||
+                            `Interactive Games` ? (
+                              <>
+                                <a
+                                  href={
+                                    fetchEvent.data.date !== currentDate
+                                      ? `#`
+                                      : fetchEvent.data.link
+                                  }
+                                  className={`outline-none py-1 text-center bg-normalBlue text-gray-50 mt-10 rounded-full duration-150 hover:bg-primaryBlue ${
+                                    fetchEvent.data.date !== currentDate
+                                      ? `cursor-not-allowed`
+                                      : `pointer-events-auto`
+                                  }`}
+                                >
+                                  Join Meeting
+                                </a>
+                                <span
+                                  className={`text-red-500 tracking-wide text-11px text-center mt-2`}
+                                >
+                                  Link is not available
+                                </span>
+                              </>
+                            ) : (
+                              <a
+                                href={fetchEvent.data.link}
+                                className={`outline-none py-1 text-center bg-normalBlue text-gray-50 mt-10 rounded-full duration-150 hover:bg-primaryBlue`}
+                              >
+                                Join Meeting
+                              </a>
+                            )}
                           </div>
                         </>
                       )}
                   </div>
                 </div>
-              </div>
+              </StyledScroll>
             </div>
           </StyledModal>
         </>
@@ -521,4 +617,20 @@ const StyledMenu = styled.div`
 
 const StyledModal = styled.div`
   background-color: rgba(0, 0, 0, 0.6);
+`;
+
+const StyledScroll = styled.div`
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #1e81b0;
+    border-radius: 10px;
+  }
+`;
+
+const StyledImages = styled.img`
+  :hover {
+    transform: scale(1.1);
+  }
 `;

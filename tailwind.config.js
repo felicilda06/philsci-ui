@@ -30,7 +30,9 @@ module.exports = {
         "menu-size":"100px",
         "img-modal":"170px",
         "winner":"65%",
-        "modal-img-size":"300px"
+        "modal-img-size":"300px",
+        "menu":"70%",
+        "menu-resize":"75%"
       },
       fontSize:{
         "9px":"9px",

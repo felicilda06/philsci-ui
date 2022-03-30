@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import Confetti from "react-confetti";
 
 const Winners: React.FC = () => {
   type TSubject =
@@ -7,12 +8,26 @@ const Winners: React.FC = () => {
     | `Biology`
     | `Chemistry`
     | `Math`
-    | `Computer Science`;
+    | `Computer Science`
+    | `Makers Fest`;
 
   const [subject, setSubject] = useState<TSubject>(`Physics`);
+  const width = window.innerWidth;
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = sessionStorage.getItem("token");
+    if (!token) {
+      navigate("/");
+      return;
+    }
+  });
 
   return (
-    <div className={`h-auto w-full px-10 py-10`}>
+    <div className={`h-auto w-full px-10 py-10 relative`}>
+      <div className={`absolute top-0`}>
+        <Confetti width={width} />
+      </div>
       <h1
         className={`text-center tracking-wide text-2xl text-primaryBlue mt-4 font-semibold`}
       >
@@ -52,6 +67,12 @@ const Winners: React.FC = () => {
         >
           Computer Science
         </li>
+        <li
+          onClick={() => setSubject(`Makers Fest`)}
+          className={`cursor-pointer underline text-normalBlue duration-150 hover:text-primaryBlue hover:font-semibold text-14px`}
+        >
+          Makers Fest
+        </li>
       </ul>
       <div>
         <Link
@@ -63,7 +84,7 @@ const Winners: React.FC = () => {
           </button>
         </Link>
         <div
-          className={`physics mt-10 pb-10 bg-gray-700 text-gray-100 pt-10 overflow-y-auto h-winner w-auto pr-4 border border-gray-400 pl-5 md:pl-20 lg:pl-20 xl:pl-20`}
+          className={`physics mt-10 pb-10 bg-gray-700 text-gray-100 pt-10 overflow-y-auto h-winner w-auto pr-5 border border-gray-400 pl-5 md:pl-20 lg:pl-20 xl:pl-20`}
         >
           {subject === `Physics` && (
             <>
@@ -146,9 +167,9 @@ const Winners: React.FC = () => {
           {subject === `Chemistry` && (
             <>
               <h1 className={`font-semibold  tracking-wider uppercase`}>
-                {ChemistryWinner.subject}
+                {chemistryWinners.subject}
               </h1>
-              {ChemistryWinner.data.map((props) => {
+              {chemistryWinners.data.map((props) => {
                 return (
                   <div className={`pb-5`}>
                     <h3
@@ -175,6 +196,32 @@ const Winners: React.FC = () => {
                 {MathWinner.subject}
               </h1>
               {MathWinner.data.map((props) => {
+                return (
+                  <div className={`pb-5`}>
+                    <h3
+                      className={`text-rose-400 tracking-wider font-semibold mt-3`}
+                    >
+                      {props.yearLvl}
+                    </h3>
+                    <span className={`tracking-wide font-semibold`}>
+                      Game Title: {props.title}
+                    </span>
+                    <ul className={`mt-4`}>
+                      {props.students.map((student) => {
+                        return <li className={`tracking-wider`}>{student}</li>;
+                      })}
+                    </ul>
+                  </div>
+                );
+              })}
+            </>
+          )}
+          {subject === `Makers Fest` && (
+            <>
+              <h1 className={`font-semibold  tracking-wider uppercase`}>
+                {makersFestWinners.subject}
+              </h1>
+              {makersFestWinners.data.map((props) => {
                 return (
                   <div className={`pb-5`}>
                     <h3
@@ -283,6 +330,21 @@ const CSWinner = {
   subject: `E. Computer Scince`,
   data: [
     {
+      yearLvl: `Grade 7`,
+      title: `Lightbot Coding Challenge`,
+      students: [
+        `1st Placer - Mark Christian Mendoza (Diamond)`,
+        `2nd Placer - Niño Christian Arado (Diamond)`,
+        `3rd Placer - Samantha Coroña (Emerald)`,
+        ` Consolation Prizes - [ Kairah Yiesha-Li Jacobe (Ruby)
+          Samantha Lian Ching (Ruby)
+          Samuelle Ysidore Jagonio (Emerald)
+          Carl Jerwen Pelias (Diamond) 
+        ]
+        `,
+      ],
+    },
+    {
       yearLvl: `Grade 8`,
       title: `CodeRelay`,
       students: [
@@ -308,27 +370,6 @@ const CSWinner = {
           Ellizar John ZABALA
         }`,
       ],
-    },
-  ],
-};
-
-const ChemistryWinner = {
-  subject: `C. Chemistry`,
-  data: [
-    {
-      yearLvl: `Grade 7`,
-      title: ``,
-      students: [``],
-    },
-    {
-      yearLvl: `Grade 8`,
-      title: ``,
-      students: [``],
-    },
-    {
-      yearLvl: `Grade 9`,
-      title: ``,
-      students: [``],
     },
   ],
 };
@@ -412,6 +453,97 @@ const MathWinner = {
         Kyle Ravinn Nase,
         Rizh Keilah Manago 
       ]`,
+      ],
+    },
+  ],
+};
+
+const chemistryWinners = {
+  subject: `A. Chemistry`,
+  data: [
+    {
+      yearLvl: `Grade 7`,
+      title: `Chem Quizizz Winners`,
+      students: [
+        `Villasoto, John Hubert - Ruby  (assigned)
+         Modesto, Ruthzil Anne - Diamond
+         Mendoza, Mark Christian - Diamond (assigned)
+         Apuyan, Makki - Emerald
+         Lagera, Lyka - Ruby
+         Peñaflor, Cris Jon - Emerald
+         Oliver, Jef Allen - Diamond (assigned)
+         Arado, Niño Christian - Ruby
+         Lopez, Mary Julln - Diamond
+         Coroña, Samantha - Emerald 
+        `,
+      ],
+    },
+    {
+      yearLvl: `Grade 8`,
+      title: `Chem Quizizz Winners`,
+      students: [
+        `Roberts, David - Jasmine (assigned)
+         Jorge, John - Camia (assigned)
+         Amador, Ted - Jasmine (assigned)
+         Guial, Olyssa - Sampaguita (assigned)
+         Bardelosa, Xyra - Jasmine (assigned)
+         Estremera, Cyrhel - Jasmine (assigned)
+         Royo, Ashley - Jasmine (assigned)
+         Bornillo, Crystal - Camia (assigned)
+         Molabola, John Andelle -Sampaguita (assigned)
+         Lampayan, Nigel - Sampaguita (assigned) 
+        `,
+      ],
+    },
+    {
+      yearLvl: `Grade 9`,
+      title: `Chem Quizizz Winners`,
+      students: [
+        `Yu, Shine - Sodium 		(assigned)
+         Lao, Brenan Louis - Rubidium 
+         Sudario, Mark Joshua - Potassium
+         Siega, Sebastian - Sodium 	(assigned)
+         Saño, Jezrel Marie - Rubidium
+         Canonoy, Ashkinaz - Rubidium
+         Tille, Derek - Rubidium 	(assigned)
+         Profetana, Rhea - Sodium 	(assigned)
+         Camarines, Roej - Sodium 	(assigned) 
+        `,
+      ],
+    },
+  ],
+};
+
+const makersFestWinners = {
+  subject: `F. Makers Fest`,
+  data: [
+    {
+      yearLvl: ``,
+      title: `Mascot Design Challenge`,
+      students: [
+        `Winner -  Entry#1 Bill the Beaver by Zenas Praise Agnila (G9-Potassium)
+        Wins cash Prize of Php 2,000.00 
+        `,
+        `Consolation Prize - Entry#2  Eury the Plant by Faye Rhianna Avendaño (G9-Sodium)
+        Receives cash Prize of Php 1,000.00`,
+      ],
+    },
+    {
+      yearLvl: ``,
+      title: `Scrap Art Challenge`,
+      students: [
+        `1st Placer - [ Hoo Lakambini, Narrido Natalie ]`,
+        `2nd Placer - [ Samson Althea, Cesista Hannah ]`,
+        `3rd Placer - [ Canales Fiona, Eloy Kimberly, Gullemas Iris ]`,
+        `Special Prize - [ Faraon Zac, Agosila Fel ]`,
+      ],
+    },
+    {
+      yearLvl: `Grade 9`,
+      title: `Mapping the Organ Systems`,
+      students: [
+        `Token of appreciations will be given to participants :`,
+        `Josh Berhyn Toscano (Emerald), Ahkia Balo (Emerald), Eyessa Jintalan (Emerald)`,
       ],
     },
   ],

@@ -1,14 +1,28 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import Confetti from "react-confetti";
 
 const Prizes: React.FC = () => {
   const p1 = require(`../assets/images/prize1.png`);
   const p2 = require(`../assets/images/prize2.png`);
   const p3 = require(`../assets/images/prize3.png`);
   const p4 = require(`../assets/images/prize4.png`);
+  const width = window.innerWidth;
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = sessionStorage.getItem("token");
+    if (!token) {
+      navigate("/");
+      return;
+    }
+  });
 
   return (
-    <div className={`h-auto w-full px-10 py-10`}>
+    <div className={`h-auto w-full px-10 py-10 relative`}>
+      <div className={`absolute top-0`}>
+        <Confetti width={width} />
+      </div>
       <h1
         className={`text-center tracking-wide text-2xl text-primaryBlue mt-4 font-semibold`}
       >
