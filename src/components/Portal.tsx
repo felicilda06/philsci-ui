@@ -384,7 +384,7 @@ const Portal: React.FC = () => {
               className={`relative z-10 w-auto h-full flex justify-center items-center px-10`}
             >
               <StyledScroll
-                className={`bg-gray-50 p-10 relative shadow-lg shadow-gray-700 rounded-xl overflow-y-auto px-10 ${
+                className={`bg-gray-50 p-10 relative shadow-lg shadow-gray-700 rounded-xl overflow-y-auto overflow-x-hidden px-10 ${
                   fetchEvent.data && fetchEvent.data.event === `Info Desk`
                     ? `h-auto`
                     : `h-menu-resize md:h-menu lg:h-menu xl:h-menu`
@@ -409,7 +409,9 @@ const Portal: React.FC = () => {
                         <div
                           className={`evaluation-links mt-6 text-gray-800 flex flex-col items-center`}
                         >
-                          <p className={` text-justify tracking-wider text-13px`}>
+                          <p
+                            className={` text-justify tracking-wider text-13px`}
+                          >
                             We would like to request 5 - 10 mins of your time to
                             evaluate the conduct of 2-day 2022 SMT Fair. Your
                             honest feedback will be used in helping us improve
@@ -440,10 +442,15 @@ const Portal: React.FC = () => {
                             </div>
                           </ul>
                         </div>
-                        <small className={`mt-8 text-gray-800 text-center`}>For more information about the program, please click the <b className={`text-normalBlue underline`}>Preview</b> button.</small>
+                        <small className={`mt-8 text-gray-800 text-center`}>
+                          For more information about the program, please click
+                          the{" "}
+                          <b className={`text-normalBlue underline`}>Preview</b>{" "}
+                          button.
+                        </small>
                         <small
                           className={`text-gray-800 font-semibold text-13px tracking-wide text-center mt-4`}
-                        > 
+                        >
                           Program of Activities
                         </small>
                         <Link
@@ -467,42 +474,62 @@ const Portal: React.FC = () => {
                     {fetchEvent.data &&
                       fetchEvent.data.event === `Research Exhibits` && (
                         <div className={`mt-10`}>
-                          <span
-                            className={`text-14px text-gray-800 flex justify-center`}
+                          <h2
+                            className={`font-semibold text-primaryBlue tracking-wide text-14px text-center`}
                           >
-                            For more example, please click the button below.
+                            Research Posters
+                          </h2>
+                          <span
+                            className={`text-14px text-gray-700 flex justify-center mt-10 font-semibold text-justify`}
+                          >
+                            Exhibit 1: Characterization and Distribution of
+                            Microplastics in Fish and Seashells from Cancabato
+                            Bay, Tacloban City.
                           </span>
                           <div
                             className={`flex flex-col gap-8 items-center mt-6`}
                           >
                             <a
                               href="https://www.facebook.com/pisayevc/photos/pcb.4444369162330412/4444363935664268/"
-                              className={`w-img-modal relative h-img-modal flex justify-center`}
+                              className={`w-auto relative h-auto flex justify-center`}
                             >
                               <StyledImages
                                 src={poster1}
                                 alt="Poster 1"
                                 title={`Poster 1`}
-                                className={`w-img-size relative h-img-modal object-cover border border-gray-300 cursor-zoom-in duration-150`}
+                                className={`relative w-auto h-auto object-fill border border-gray-300 cursor-zoom-in duration-150`}
                               />
                             </a>
+                            <span
+                              className={`text-14px text-gray-700 flex justify-center m-2 font-semibold text-justify`}
+                            >
+                              Exhibit 2: Profiling of Heavy Metal Presence
+                              around Mining Site Environs in Homonhon Island,
+                              Guiuan, Eastern Samar.
+                            </span>
                             <a
                               href="https://www.facebook.com/pisayevc/photos/pcb.4444369162330412/4444365488997446/"
-                              className={`w-img-modal relative h-img-modal flex justify-center`}
+                              className={`relative w-auto h-auto flex justify-center`}
                             >
                               <StyledImages
                                 src={poster2}
                                 alt="Poster 2"
                                 title={`Poster 2`}
-                                className={`w-img-size relative h-img-modal object-cover border border-gray-300 cursor-zoom-in duration-150`}
+                                className={`relative w-auto h-auto object-fill border border-gray-300 cursor-zoom-in duration-150`}
                               />
                             </a>
                           </div>
+                          <div className={`mt-10`}>
+                            <span className={`text-13px tracking-wide text-justify`}>
+                              Click the button below for the List of Scientific
+                              Studies of Grade 12 Students.
+                            </span>
+                          </div>
                           <a
                             href={`https://www.facebook.com/pisayevc`}
-                            className={`outline-none py-1 text-center bg-normalBlue text-gray-50 mt-10 text-13px rounded-full duration-150 hover:bg-primaryBlue block`}
+                            className={`outline-none py-1 mt-5 bg-normalBlue text-gray-50 text-13px w-auto text-center rounded-full block duration-150 hover:bg-primaryBlue`}
                           >
-                            Click here
+                          <i className={`fa fa-external-link mr-1`}></i> Click here
                           </a>
                         </div>
                       )}
@@ -631,6 +658,6 @@ const StyledScroll = styled.div`
 
 const StyledImages = styled.img`
   :hover {
-    transform: scale(1.1);
+    
   }
 `;
