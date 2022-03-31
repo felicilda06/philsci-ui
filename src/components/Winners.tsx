@@ -271,9 +271,9 @@ const physicWinners = {
       title: `Planet Lyra Puzzle`,
       students: [
         `1st - [ Princess Nada, Joshan Sicadsicad ]`,
-        `2.5th / Tie - [ Lizzy Agner, Kyle Llose, Zaryn Badillo ]`,
-        `2.5th / Tie - [ Shenna Mae Ongbit, Nicole Angelique Naldo ]`,
-        `4th - [ Rica Sophia C. Calipes, Rolfgin U. Basallage ]`,
+        `2nd - [ Lizzy Agner, Kyle Llose, Zaryn Badillo ]`,
+        `2nd - [ Shenna Mae Ongbit, Nicole Angelique Naldo ]`,
+        `3rd - [ Rica Sophia C. Calipes, Rolfgin U. Basallage ]`,
       ],
     },
     {
@@ -533,18 +533,8 @@ const makersFestWinners = {
       yearLvl: ``,
       title: `Scrap Art Challenge`,
       students: [
-        `1st Placer - [ Hoo Lakambini, Narrido Natalie ]`,
-        `2nd Placer - [ Samson Althea, Cesista Hannah ]`,
-        `3rd Placer - [ Canales Fiona, Eloy Kimberly, Gullemas Iris ]`,
-        `Special Prize - [ Faraon Zac, Agosila Fel ]`,
-      ],
-    },
-    {
-      yearLvl: `Grade 9`,
-      title: `Mapping the Organ Systems`,
-      students: [
-        `Token of appreciations will be given to participants :`,
-        `Josh Berhyn Toscano (Emerald), Ahkia Balo (Emerald), Eyessa Jintalan (Emerald)`,
+        `Token of appreciations will be given to participants :
+        Josh Berhyn Toscano (Emerald), Ahkia Balo (Emerald), Eyessa Jintalan (Emerald) `,
       ],
     },
   ],

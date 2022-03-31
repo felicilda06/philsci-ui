@@ -520,16 +520,19 @@ const Portal: React.FC = () => {
                             </a>
                           </div>
                           <div className={`mt-10`}>
-                            <span className={`text-13px tracking-wide text-justify`}>
+                            <span
+                              className={`text-13px tracking-wide text-justify`}
+                            >
                               Click the button below for the List of Scientific
                               Studies of Grade 12 Students.
                             </span>
                           </div>
                           <a
-                            href={`https://www.facebook.com/pisayevc`}
+                            href={`https://www.facebook.com/pisayevc/posts/4444357775664884`}
                             className={`outline-none py-1 mt-5 bg-normalBlue text-gray-50 text-13px w-auto text-center rounded-full block duration-150 hover:bg-primaryBlue`}
                           >
-                          <i className={`fa fa-external-link mr-1`}></i> Click here
+                            <i className={`fa fa-external-link mr-1`}></i> Click
+                            here
                           </a>
                         </div>
                       )}
@@ -601,11 +604,13 @@ const Portal: React.FC = () => {
                                 >
                                   Join Meeting
                                 </a>
-                                <span
-                                  className={`text-red-500 tracking-wide text-11px text-center mt-2`}
-                                >
-                                  Link is not available
-                                </span>
+                                {fetchEvent.data.date !== currentDate && (
+                                  <span
+                                    className={`text-red-500 tracking-wide text-11px text-center mt-2`}
+                                  >
+                                    Link is not available
+                                  </span>
+                                )}
                               </>
                             ) : (
                               <a
@@ -658,6 +663,5 @@ const StyledScroll = styled.div`
 
 const StyledImages = styled.img`
   :hover {
-    
   }
 `;
