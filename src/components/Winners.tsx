@@ -270,22 +270,31 @@ const physicWinners = {
       yearLvl: `Grade 8`,
       title: `Planet Lyra Puzzle`,
       students: [
-        `1st Place - [ Princess Nada, Joshan Sicadsicad ]`,
-        `2nd Place - [ Lizzy Agner, Kyle Llose, Zaryn Badillo ]`,
-        `2nd Place - [ Shenna Mae Ongbit, Nicole Angelique Naldo ]`,
-        `3rd Place - [ Rica Sophia C. Calipes, Rolfgin U. Basallage ]`,
+        `1st Place :`,
+        `- Princess Nada`,
+        `- Joshan Sicadsicad`,
+        `2nd Place :`,
+        `- Lizzy Agner`,
+        `- Kyle Llose`,
+        `- Zaryn Badillo`,
+        `2nd Place :`,
+        `- Shenna Mae Ongbit`,
+        `- Nicole Angelique Naldo`,
+        `3rd Place :`,
+        `- Rica Sophia C. Calipes`,
+        `- Rolfgin U. Basallage`
       ],
     },
     {
       yearLvl: `Grade 9`,
       title: `Magnon Particle Puzzle`,
       students: [
-        `1st Place - Faye Rhianna Avendano`,
-        `2nd Place - Ellyce Lim, Mary Phipps`,
-        `3rd Place - Elizar John Zabala N.A.`,
-        `4th Place - Quizol and Francisco`,
-        `5th Place - Nikki Ela Tabaranza`,
-        `6th Place - Francis Zabala`,
+        `1st Place -  Faye Rhianna Avendano `,
+        `2nd Place -  Ellyce Lim, Mary Phipps `,
+        `3rd Place -  Elizar John Zabala N.A. `,
+        `4th Place -  Quizol and Francisco `,
+        `5th Place -  Nikki Ela Tabaranza `,
+        `6th Place -  Francis Zabala `,
       ],
     },
   ],
@@ -298,30 +307,73 @@ const biologyWinners = {
       yearLvl: `Grade 7`,
       title: `Using the Scientific Method to Survive an Escape Room`,
       students: [
-        `1st Place - [ Alyssa Capoquian, Rhazmazandra, Obaob ]`,
-        `2nd Place - [ Isha Young, Lilia Anne Ripalda, Christine Joy Mutthan ]`,
-        `3rd Place - [ Mary Julin Lopez, Jassielle Lopega ]`,
-        `4th Place - [ Samuelle Jagonio, Lyka Lagera, Samantha Villamejor, Amare Sudario ]`,
+        `1st Place :`,
+        `- Alyssa Capoquian`,
+        `- Rhazmazandra Obaob`,
+        `2nd Place :`,
+        `- Isha Young`,
+        `- Lilia Anne Ripalda`,
+        `- Christine Joy Mutthan`,
+        `3rd Place :`,
+        `- Mary Julin Lopez`,
+        `- Jassielle Lopega`,
+        `4th Place :`,
+        `- Samuelle Jagonio`,
+        `- Lyka Lagera`,
+        `- Samantha Villamejor`,
+        `- Amare Sudario`
       ],
     },
     {
       yearLvl: `Grade 8`,
       title: `Mystery in the National Aquarium`,
       students: [
-        `1st Place - [ Hoo Lakambini, Narrido Natalie ]`,
-        `2nd Place - [ Samson Althea, Cesista Hannah ]`,
-        `3rd Place - [ Canales Fiona, Eloy Kimberly, Gullemas Iris ]`,
-        `Special Prize - [ Faraon Zac, Agosila Fel ]`,
+        `1st Place :`,
+        `- Hoo Lakambini`,
+        `- Narrido Natalie`,
+        `2nd Place :`,
+        `- Samson Althea`,
+        `- Cesista Hannah`,
+        `3rd Place :`,
+        `- Canales Fiona`,
+        `- Eloy Kimberly`,
+        `- Gullemas Iris`,
+        `Special Prize :`,
+        `- Faraon Zac`,
+        `- Agosila Fel`
       ],
     },
     {
       yearLvl: `Grade 9`,
       title: `Mapping the Organ Systems`,
       students: [
-        `1st Place - [ Lelina, Advincula, Agnila P. , Agnila Z. , De Leon, Tabinas ]`,
-        `2nd Place - [ Abobo, Lao, Nase, Morabe, Saño ]`,
-        `3rd Place - [ Maud Mejias, Cordeta, Mendoza, Labine, Quebec ]`,
-        `Special Prize (OrgaNames) - [ Fiona Nadine, Macalalag, Kiara Kayleigh-Ann, Gaut, Mark Hans Tarrayo, Nikki Ela Tabaranza, Mark Joshua Sudario ]`,
+        `1st Place :`,
+        `- Lelina`,
+        `- Advincula`,
+        `- Agnila Z.`,
+        `- Agnila P.`,
+        `- De Leon`,
+        `- Tabinas`,
+        `2nd Place :`,
+        `- Abobo`,
+        `- Lao`,
+        `- Nase`,
+        `- Morabe`,
+        `- Saño`,
+        `3rd Place :`,
+        `Maud Mejias`,
+        `- Cordeta`,
+        `- Mendoza`,
+        `- Labine`,
+        `- Quebec`,
+        `Special Prize (OrgaNames) :`,
+        `- Fiona Nadine`,
+        `- Macalalag`,
+        `- Kiara Kayleigh-Ann`,
+        `- Gaut`,
+        `- Mark Hans Tarrayo`,
+        `- Nikki Ela Tabaranza`,
+        `- Mark Joshua Sudario`
       ],
     },
   ],
@@ -337,39 +389,52 @@ const CSWinner = {
         `1st Place - Mark Christian Mendoza (Diamond)`,
         `2nd Place - Niño Christian Arado (Diamond)`,
         `3rd Place - Samantha Coroña (Emerald)`,
-        ` Consolation Prizes - [ Kairah Yiesha-Li Jacobe (Ruby)
-          Samantha Lian Ching (Ruby)
-          Samuelle Ysidore Jagonio (Emerald)
-          Carl Jerwen Pelias (Diamond) 
-        ]
-        `,
+        ` Consolation Prizes :`,
+        `Kairah Yiesha-Li Jacobe (Ruby)`,
+        `Samantha Lian Ching (Ruby)`,
+        `Samuelle Ysidore Jagonio (Emerald)`,
+        `Carl Jerwen Pelias (Diamond)`
       ],
     },
     {
       yearLvl: `Grade 8`,
       title: `CodeRelay`,
       students: [
-        `1st Place (Sampaguita) - [ Khalil Bagas, Akhou Uribe, Enrico Pentado, Janbob Alota, Jaden Morales ]`,
-        `2nd Place (Camia) - [ Zachary Tan, Rhian Darantinao, Nina Marmita ]`,
-        `3rd Place (Jasmine) - [ Chad Cervantes, Alan Canono, Jim Cadion, Mark Valdez ]`,
+        `1st Place (Sampaguita) :`,
+        `- Khalil Bagas`,
+        `- Akhou Uribe`,
+        `- Enrico Pentado`,
+        `- Janbob Alota`,
+        `- Jaden Morales`,
+        `2nd Place (Camia) :`,
+        `- Zachary Tan`,
+        `- Rhian Darantinao`,
+        `- Nina Marmita`,
+        `3rd Place (Jasmine) :`,
+        `- Chad Cervantes`,
+        `- Alan Canono`,
+        `- Jim Cadion`,
+        `- Mark Valdez`
       ],
     },
     {
       yearLvl: `Grade 9`,
       title: `CodeCombat`,
       students: [
-        `Top 3 - [ Mark Hans TARRAYO - Tote bag, Mark Joshua SUDARIO -  bucket hat, Kelsey Marie GOMEZ - Tote bag ]`,
-        `Consolation Prizes - {
-          Ronhitz Cabungcag,
-          John JOSOL,
-          Sebastian Ong,
-          Kyle Ravinn Nase,
-          Fiona Nadine MACALALAG,
-          Benj Josh Justine SALVATIERRA,
-          Clarence Tabina,
-          Nikki Ela Tabaranza,
-          Ellizar John ZABALA
-        }`,
+        `Top 3 :`,
+        `- Mark Hans TARRAYO - Tote bag`,
+        `- Mark Joshua SUDARIO -  bucket hat`,
+        `- Kelsey Marie GOMEZ - Tote bag`,
+        `Consolation Prizes :`,
+        `- Ronhitz Cabungcag`,
+        `- John JOSOL`,
+        `- Sebastian Ong`,
+        `- Kyle Ravinn Nase`,
+        `- Fiona Nadine MACALALAG`,
+        `- Benj Josh Justine SALVATIERRA`,
+        `- Clarence Tabina`,
+        `- Nikki Ela Tabaranza`,
+        `- Ellizar John ZABALA`
       ],
     },
   ],
@@ -382,78 +447,75 @@ const MathWinner = {
       yearLvl: `Grade 7`,
       title: `Guess the Mathematician`,
       students: [
-        `Winners : [ 
-        Samuelle Jagonio,
-        Samantha Lian,
-        Chad Tristan,
-        Jef Allen Oliver,
-        Francis Pla,
-        Chris Jon Penaflor,
-        Ruthzil Modesto,
-        Eyessa Jintalan,
-        Keefe Terence Matobato,
-        Nino Christian Arado,
-        Melody Joy Quintana,
-        Samantha Corona,
-        Aliyah Agang,
-        Rei Christopher Alinsub,
-        Giovanni Ignacio,
-        Precious Fara Berdos,
-        Philip Arthur Acidre,
-        Keith Emmanuel Separa,
-        Jaliyah Ayesha Tecson,
-        Kassandra Nicole Garces
-        Joshua Rey Mendoza 
-      ]`,
+        `Winners :`,
+        `Samuelle Jagonio`,
+        `Samantha Lian`,
+        `Chad Tristan`,
+        `Jef Allen Oliver`,
+        `Francis Pla`,
+        `Chris Jon Penaflor`,
+        `Ruthzil Modesto`,
+        `Eyessa Jintalan`,
+        `Keefe Terence Matobato`,
+        `Nino Christian Arado`,
+        `Melody Joy Quintana`,
+        `Samantha Corona`,
+        `Aliyah Agang`,
+        `Rei Christopher Alinsub`,
+        `Giovanni Ignacio`,
+        `Precious Fara Berdos`,
+        `Philip Arthur Acidre`,
+        `Keith Emmanuel Separa`,
+        `Jaliyah Ayesha Tecson`,
+        `Kassandra Nicole Garces`,
+        `Joshua Rey Mendoza`
       ],
     },
     {
       yearLvl: `Grade 8`,
       title: `Guess the Mathematician`,
       students: [
-        `Winners : [ 
-        Jedric Chu,
-        Charles David Tan Uy,
-        Mylka Machica,
-        Samantha Macabit,
-        Nina Mae Marmita,
-        Ariadni Palomo,
-        Kytlin Trinity Reas,
-        Kyle Benedict Ciervo,
-        Francheska Gudgad,
-        Enrico Pentado,
-        Chimzil Montalban,
-        Rhainbert Lampayan,
-        Akhou Uribe,
-        Richard Gerilla,
-        David Edward Roberts,
-        Rhian Darantinao,
-        Joshan Sicadsicad 
-      ]`,
+        `Winners :`,
+        `Jedric Chu`,
+        `Charles David Tan Uy`,
+        `Mylka Machica`,
+        `Samantha Macabit`,
+        `Nina Mae Marmita`,
+        `Ariadni Palomo`,
+        `Kytlin Trinity Reas`,
+        `Kyle Benedict Ciervo`,
+        `Francheska Gudgad`,
+        `Enrico Pentado`,
+        `Chimzil Montalban`,
+        `Rhainbert Lampayan`,
+        `Akhou Uribe`,
+        `Richard Gerilla`,
+        `David Edward Roberts`,
+        `Rhian Darantinao`,
+        `Joshan Sicadsicad`
       ],
     },
     {
       yearLvl: `Grade 9`,
       title: `Guess the Mathematician`,
       students: [
-        `Winners: [ 
-        Nikki Ela Tabaranza,
-        Kiara Gaut,
-        Zenas Praise Agnila,
-        Poimen Agnila,
-        Mark Joshua Sudario,
-        Clarence Tabinas,
-        Bea Avila,
-        Shine Yu,
-        Ellyce Jae Lim,
-        Raniel Hermosilla,
-        Jezrel Sano,
-        Faye Rhianna,
-        Gaea Jazlin Tonido,
-        John Josol,
-        Kyle Ravinn Nase,
-        Rizh Keilah Manago 
-      ]`,
+        `Winners :`,
+        `Nikki Ela Tabaranza`,
+        `Kiara Gaut`,
+        `Zenas Praise Agnila`,
+        `Poimen Agnila`,
+        `Mark Joshua Sudario`,
+        `Clarence Tabinas`,
+        `Bea Avila`,
+        `Shine Yu`,
+        `Ellyce Jae Lim`,
+        `Raniel Hermosilla`,
+        `Jezrel Sano`,
+        `Faye Rhianna`,
+        `Gaea Jazlin Tonido`,
+        `John Josol`,
+        `Kyle Ravinn Nase`,
+        `Rizh Keilah Manago`
       ],
     },
   ],
@@ -466,50 +528,48 @@ const chemistryWinners = {
       yearLvl: `Grade 7`,
       title: `Chem Quizizz Winners`,
       students: [
-        `Villasoto, John Hubert - Ruby  (assigned)
-         Modesto, Ruthzil Anne - Diamond
-         Mendoza, Mark Christian - Diamond (assigned)
-         Apuyan, Makki - Emerald
-         Lagera, Lyka - Ruby
-         Peñaflor, Cris Jon - Emerald
-         Oliver, Jef Allen - Diamond (assigned)
-         Arado, Niño Christian - Ruby
-         Lopez, Mary Julln - Diamond
-         Coroña, Samantha - Emerald 
-        `,
+        `Villasoto, John Hubert - Ruby  (assigned)`,
+        `Modesto, Ruthzil Anne - Diamond`,
+        `Mendoza, Mark Christian - Diamond (assigned)`,
+        `Apuyan, Makki - Emerald`,
+        `Lagera, Lyka - Ruby`,
+        `Peñaflor, Cris Jon - Emerald`,
+        `Oliver, Jef Allen - Diamond (assigned)`,
+        `Arado, Niño Christian - Ruby`,
+        `Lopez, Mary Julln - Diamond`,
+        `Coroña, Samantha - Emerald`
       ],
     },
     {
       yearLvl: `Grade 8`,
       title: `Chem Quizizz Winners`,
       students: [
-        `Roberts, David - Jasmine (assigned)
-         Jorge, John - Camia (assigned)
-         Amador, Ted - Jasmine (assigned)
-         Guial, Olyssa - Sampaguita (assigned)
-         Bardelosa, Xyra - Jasmine (assigned)
-         Estremera, Cyrhel - Jasmine (assigned)
-         Royo, Ashley - Jasmine (assigned)
-         Bornillo, Crystal - Camia (assigned)
-         Molabola, John Andelle -Sampaguita (assigned)
-         Lampayan, Nigel - Sampaguita (assigned) 
-        `,
+        `Roberts, David - Jasmine (assigned)`,
+        `Jorge, John - Camia (assigned)`,
+        `Amador, Ted - Jasmine (assigned)`,
+        `Guial, Olyssa - Sampaguita (assigned)`,
+        `Bardelosa, Xyra - Jasmine (assigned)`,
+        `Estremera, Cyrhel - Jasmine (assigned)`,
+        `Royo, Ashley - Jasmine (assigned)`,
+        `Bornillo, Crystal - Camia (assigned)`,
+        `Molabola, John Andelle -Sampaguita (assigned)`,
+        `Lampayan, Nigel - Sampaguita (assigned)`
+        
       ],
     },
     {
       yearLvl: `Grade 9`,
       title: `Chem Quizizz Winners`,
       students: [
-        `Yu, Shine - Sodium 		(assigned)
-         Lao, Brenan Louis - Rubidium 
-         Sudario, Mark Joshua - Potassium
-         Siega, Sebastian - Sodium 	(assigned)
-         Saño, Jezrel Marie - Rubidium
-         Canonoy, Ashkinaz - Rubidium
-         Tille, Derek - Rubidium 	(assigned)
-         Profetana, Rhea - Sodium 	(assigned)
-         Camarines, Roej - Sodium 	(assigned) 
-        `,
+        `Yu, Shine - Sodium 		(assigned)`,
+        `Lao, Brenan Louis - Rubidium`,
+        `Sudario, Mark Joshua - Potassium`,
+        `Siega, Sebastian - Sodium 	(assigned)`,
+        `Saño, Jezrel Marie - Rubidium`,
+        `Canonoy, Ashkinaz - Rubidium`,
+        `Tille, Derek - Rubidium 	(assigned)`,
+        `Profetana, Rhea - Sodium 	(assigned)`,
+        `Camarines, Roej - Sodium 	(assigned)`
       ],
     },
   ],
